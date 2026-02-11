@@ -26,6 +26,13 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@fast-crud/fast-crud": "^1.27.10",
+    "@fast-crud/fast-extends": "^1.27.10",
+    "@fast-crud/ui-antdv4": "^1.27.10",
+    "@fast-crud/ui-interface": "^1.27.10",
+    "@iconify/vue": "catalog:",
+    "@vben-core/preferences": "workspace:*",
     "@vben/access": "workspace:*",
     "@vben/common-ui": "workspace:*",
     "@vben/constants": "workspace:*",
@@ -43,6 +50,7 @@
     "@vueuse/core": "catalog:",
     "ant-design-vue": "catalog:",
     "dayjs": "catalog:",
+    "lodash-es": "^4.17.23",
     "pinia": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"

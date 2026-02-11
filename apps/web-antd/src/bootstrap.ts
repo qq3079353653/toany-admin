@@ -10,6 +10,7 @@ import '@vben/styles/antd';
 import { useTitle } from '@vueuse/core';
 
 import { $t, setupI18n } from '#/locales';
+import { registerFastCrud } from '#/plugin/fast-crud/setup-fast-crud';
 
 import { initComponentAdapter } from './adapter/component';
 import { initSetupVbenForm } from './adapter/form';
@@ -69,6 +70,9 @@ async function bootstrap(namespace: string) {
       useTitle(pageTitle);
     }
   });
+
+  // 安装fast-crud
+  registerFastCrud(app);
 
   app.mount('#app');
 }
