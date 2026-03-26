@@ -4,26 +4,20 @@ import type {
   PageRes,
   UserPageQuery,
 } from '@fast-crud/fast-crud';
+import {FastCrud, registerMergeColumnPlugin, setLogger, useTypes,} from '@fast-crud/fast-crud';
 
-import type { App } from 'vue';
+import type {App} from 'vue';
+import {computed} from 'vue';
 
-import { computed } from 'vue';
+import {usePreferences} from '@vben-core/preferences';
 
-import { usePreferences } from '@vben-core/preferences';
-
-import { QuestionCircleOutlined } from '@ant-design/icons-vue';
-import {
-  FastCrud,
-  registerMergeColumnPlugin,
-  setLogger,
-  useTypes,
-} from '@fast-crud/fast-crud';
+import {QuestionCircleOutlined} from '@ant-design/icons-vue';
 import ui from '@fast-crud/ui-antdv4';
-import Antdv, { notification } from 'ant-design-vue';
+import Antdv, {notification} from 'ant-design-vue';
 
-import { requestClient } from '#/api/request';
+import {requestClient} from '#/api/request';
 
-import { useCrudPermission } from './setup-fast-crud-permission';
+import {useCrudPermission} from './setup-fast-crud-permission';
 
 import '@fast-crud/fast-crud/dist/style.css';
 import '@fast-crud/ui-antdv4/dist/style.css';
@@ -61,10 +55,10 @@ export function registerFastCrud(app: App, options: any = {}) {
           transformQuery: ({ page, form, sort }: PageQuery): UserPageQuery => {
             const order = sort
               ? {
-                  properties: [sort.prop],
-                  direction: sort.asc ? 'ASC' : 'DESC',
+                orderBy: sort.prop,
+                sortBy: sort.asc ? 'ASC' : 'DESC',
                 }
-              : { direction: 'DESC', properties: ['createdTime'] };
+              : {orderBy: 'createdTime', sortBy: 'DESC'};
             const pageNumber = page?.currentPage ?? 1;
             const pageSize = page?.pageSize ?? 15;
             return {
